@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DailyConnect - News, Jobs & Opportunities</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fc;
+    color: #222;
+}
+
+header {
+    background: #0756c9;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+header p {
+    font-size: 14px;
+}
+
+nav {
+    background: #063d91;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffd43b;
+}
+
+.hero {
+    background: linear-gradient(120deg, #0756c9, #00a6d6);
+    color: white;
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 16px;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+.search-box {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    outline: none;
+    min-width: 0;
+}
+
+.search-box button {
+    background: #ffb703;
+    border: none;
+    padding: 14px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 18px;
+}
+
+.section-title {
+    font-size: 24px;
+    color: #0756c9;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.category {
+    background: white;
+    padding: 22px 12px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px #0000000c;
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+}
+
+.category span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.category:hover {
+    background: #0756c9;
+    color: white;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 12px #0000000c;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card .icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    color: #0756c9;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background: #0756c9;
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #063d91;
+}
+
+.advert {
+    background: white;
+    border: 2px dashed #bbb;
+    text-align: center;
+    padding: 35px 15px;
+    margin: 30px 0;
+    color: #777;
+    border-radius: 8px;
+}
+
+.about {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+footer {
+    background: #082b5b;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 30px;
+}
+
+footer a {
+    color: #ffcc42;
+    text-decoration: none;
+    margin: 8px;
+    display: inline-block;
+}
+
+footer p {
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+#noResults {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+}
+
+@media(max-width: 600px) {
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 DailyConnect</h1>
+    <p>Your Daily Connection to News, Business & Opportunities</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#earning">Earn Online</a>
+    <a href="#business">Business</a>
+    <a href="#technology">Technology</a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>Welcome to DailyConnect!</h2>
+    <p>
+        Discover the latest opportunities, business ideas,
+        jobs, entertainment and technology updates.
+        Everything you need, in one place.
+    </p>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+        placeholder="Search jobs, news, business...">
+        <button onclick="searchContent()">Search</button>
+    </div>
+</section>
+
+<div class="container">
+
+<h2 class="section-title">Explore DailyConnect</h2>
+
+<div class="categories">
+    <a href="#news" class="category">
+        <span>📰</span>Latest News
+    </a>
+
+    <a href="#jobs" class="category">
+        <span>💼</span>Jobs
+    </a>
+
+    <a href="#earning" class="category">
+        <span>💰</span>Online Earning
+    </a>
+
+    <a href="#business" class="category">
+        <span>🏪</span>Marketplace
+    </a>
+
+    <a href="#technology" class="category">
+        <span>💻</span>Technology
+    </a>
+</div>
+
+<div class="advert">
+    <h3>📢 Advertisement Space</h3>
+    <p>Your advertisement could appear here.</p>
+</div>
+
+<section id="news">
+<h2 class="section-title">📰 News & Entertainment</h2>
+
+<div class="cards">
+
+<div class="card searchable">
+    <div class="icon">🌍</div>
+    <h3>Latest News</h3>
+    <p>Stay informed about important events and developments around the world.</p>
+    <a href="#" class="btn">Explore News</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">🎬</div>
+    <h3>Entertainment</h3>
+    <p>Discover entertainment, celebrity updates, music and trending stories.</p>
+    <a href="#" class="btn">Explore</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">⚽</div>
+    <h3>Sports Updates</h3>
+    <p>Follow sports news, football updates and exciting sporting events.</p>
+    <a href="#" class="btn">Explore Sports</a>
+</div>
+
+</div>
+</section>
+
+<br><br>
+
+<section id="jobs">
+<h2 class="section-title">💼 Jobs & Opportunities</h2>
+
+<div class="cards">
+
+<div class="card searchable">
+    <div class="icon">💼</div>
+    <h3>Latest Job Vacancies</h3>
+    <p>Discover employment opportunities from companies and organizations.</p>
+    <a href="#" class="btn">Find Jobs</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">🏠</div>
+    <h3>Remote Jobs</h3>
+    <p>Explore work-from-home and remote employment opportunities.</p>
+    <a href="#" class="btn">Explore Jobs</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">🎓</div>
+    <h3>Scholarships</h3>
+    <p>Discover educational opportunities, scholarships and training programs.</p>
+    <a href="#" class="btn">Find Scholarships</a>
+</div>
+
+</div>
+</section>
+
+<br><br>
+
+<section id="earning">
+<h2 class="section-title">💰 Make Money Online</h2>
+
+<div class="cards">
+
+<div class="card searchable">
+    <div class="icon">📱</div>
+    <h3>Online Opportunities</h3>
+    <p>Discover legitimate online work, freelancing and digital opportunities.</p>
+    <a href="#" class="btn">Explore</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">✍️</div>
+    <h3>Freelancing</h3>
+    <p>Learn about writing, graphic design, programming and other freelance services.</p>
+    <a href="#" class="btn">Get Started</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">📚</div>
+    <h3>Business Ideas</h3>
+    <p>Discover practical business ideas and skills that can help you grow.</p>
+    <a href="#" class="btn">Discover Ideas</a>
+</div>
+
+</div>
+</section>
+
+<br><br>
+
+<section id="business">
+<h2 class="section-title">🏪 Business Marketplace</h2>
+
+<div class="cards">
+
+<div class="card searchable">
+    <div class="icon">🛍️</div>
+    <h3>Buy & Sell</h3>
+    <p>A place to discover products, services and business opportunities.</p>
+    <a href="#" class="btn">Explore Marketplace</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">📢</div>
+    <h3>Advertise Your Business</h3>
+    <p>Promote your business and reach potential customers through DailyConnect.</p>
+    <a href="mailto:dailyconnect@example.com" class="btn">Contact Us</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">🤝</div>
+    <h3>Business Networking</h3>
+    <p>Discover business connections, partnerships and growth opportunities.</p>
+    <a href="#" class="btn">Explore</a>
+</div>
+
+</div>
+</section>
+
+<br><br>
+
+<section id="technology">
+<h2 class="section-title">💻 Technology & Digital World</h2>
+
+<div class="cards">
+
+<div class="card searchable">
+    <div class="icon">🤖</div>
+    <h3>Artificial Intelligence</h3>
+    <p>Explore AI tools, digital innovations and new technologies.</p>
+    <a href="#" class="btn">Discover</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">📲</div>
+    <h3>Apps & Software</h3>
+    <p>Discover useful mobile applications, software and digital tools.</p>
+    <a href="#" class="btn">Explore Apps</a>
+</div>
+
+<div class="card searchable">
+    <div class="icon">🌐</div>
+    <h3>Digital Skills</h3>
+    <p>Learn about website development, programming and online skills.</p>
+    <a href="#" class="btn">Learn More</a>
+</div>
+
+</div>
+</section>
+
+<p id="noResults">No matching results found. Try another search.</p>
+
+<br>
+
+<div class="advert">
+    <h3>🚀 Advertise With DailyConnect</h3>
+    <p>Promote your products, services and business to our visitors.</p>
+</div>
+
+<section class="about" id="about">
+    <h2 class="section-title">About DailyConnect</h2>
+
+    <p>
+    DailyConnect is an online information and opportunities
+    platform created to connect people with useful information,
+    business opportunities, employment, technology and
+    entertainment.
+    </p>
+
+    <p>
+    Our mission is to make discovering opportunities easier
+    for Nigerians and people around the world.
+    </p>
+</section>
+
+</div>
+
+<footer>
+    <h2>🌍 DailyConnect</h2>
+    <p>Your Daily Connection to News, Business & Opportunities.</p>
+
+    <br>
+
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="mailto:dailyconnect@example.com">Contact</a>
+
+    <p>© <span id="year"></span> DailyConnect. All Rights Reserved.</p>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+function searchContent() {
+    let input = document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+    let cards = document.querySelectorAll(".searchable");
+    let found = 0;
+
+    cards.forEach(function(card) {
+        let text = card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+            card.style.display = "block";
+            found++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("noResults").style.display =
+    found === 0 ? "block" : "none";
+}
+
+document.getElementById("searchInput")
+.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        searchContent();
+    }
+});
+</script>
+
+</body>
+</html>
